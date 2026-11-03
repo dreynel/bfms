@@ -482,10 +482,6 @@ $categoryLabels = [
                                         </div>
                                     </td>
                                     <td>
-                                        <span class="badge bg-success bg-opacity-10 text-success border border-success-subtle mb-1">
-                                            <i class="bi bi-geo-alt me-1"></i><?= htmlspecialchars($r['sitio_name']) ?>
-                                        </span>
-                                        <div class="small text-muted text-truncate" style="max-width: 180px;"><?= htmlspecialchars($r['address_line']) ?></div>
                                         <div class="mb-1">
                                             <span class="badge bg-success text-white py-1 px-2 shadow-sm" style="font-size: 0.78rem;">
                                                 <i class="bi bi-geo-alt-fill me-1"></i>Sitio <?= $r['sitio_id'] ?>: <?= htmlspecialchars($r['sitio_name']) ?>
@@ -495,8 +491,6 @@ $categoryLabels = [
                                             <?= htmlspecialchars($r['address_line']) ?>
                                         </div>
                                         <?php if (!empty($r['household_no'])): ?>
-                                            <div class="small text-secondary font-monospace" style="font-size: 0.72rem;">
-                                                <i class="bi bi-house me-1"></i><?= htmlspecialchars($r['household_no']) ?>
                                             <div class="small text-muted font-monospace" style="font-size: 0.72rem;">
                                                 <i class="bi bi-house me-1"></i>HH: <?= htmlspecialchars($r['household_no']) ?>
                                             </div>
@@ -520,27 +514,21 @@ $categoryLabels = [
                                         <?php else: ?>
                                             <div class="d-flex flex-wrap gap-1">
                                                 <?php if ($r['is_pwd']): ?>
-                                                    <span class="badge badge-pwd" title="<?= htmlspecialchars($r['pwd_type'] ?? '') ?>"><i class="bi bi-person-wheelchair me-1"></i>PWD</span>
                                                     <span class="badge badge-pwd <?= ($category === 'pwd') ? 'ring-2 ring-primary fw-bold shadow-sm' : '' ?>" title="<?= htmlspecialchars($r['pwd_type'] ?? '') ?>"><i class="bi bi-person-wheelchair me-1"></i>PWD<?= !empty($r['pwd_type']) ? ' (' . htmlspecialchars($r['pwd_type']) . ')' : '' ?></span>
                                                 <?php endif; ?>
                                                 <?php if ($r['is_solo_parent']): ?>
-                                                    <span class="badge badge-solo"><i class="bi bi-person-heart me-1"></i>Solo Parent</span>
                                                     <span class="badge badge-solo <?= ($category === 'solo_parent') ? 'ring-2 ring-danger fw-bold shadow-sm' : '' ?>"><i class="bi bi-person-heart me-1"></i>Solo Parent</span>
                                                 <?php endif; ?>
                                                 <?php if ($r['is_indigent']): ?>
-                                                    <span class="badge badge-indigent"><i class="bi bi-wallet2 me-1"></i>Indigent</span>
                                                     <span class="badge badge-indigent <?= ($category === 'indigent') ? 'ring-2 ring-warning fw-bold shadow-sm' : '' ?>"><i class="bi bi-wallet2 me-1"></i>Indigent</span>
                                                 <?php endif; ?>
                                                 <?php if ($r['is_senior']): ?>
-                                                    <span class="badge badge-senior"><i class="bi bi-person-cane me-1"></i>Senior</span>
                                                     <span class="badge badge-senior <?= ($category === 'senior') ? 'ring-2 ring-info fw-bold shadow-sm' : '' ?>"><i class="bi bi-person-cane me-1"></i>Senior (60+)</span>
                                                 <?php endif; ?>
                                                 <?php if ($r['is_4ps']): ?>
-                                                    <span class="badge badge-4ps"><i class="bi bi-check-circle me-1"></i>4Ps</span>
                                                     <span class="badge badge-4ps <?= ($category === '4ps') ? 'ring-2 ring-success fw-bold shadow-sm' : '' ?>"><i class="bi bi-check-circle me-1"></i>4Ps</span>
                                                 <?php endif; ?>
                                                 <?php if (!empty($r['is_student'])): ?>
-                                                    <span class="badge bg-info-subtle text-info-emphasis border border-info-subtle"><i class="bi bi-mortarboard-fill me-1"></i>Student</span>
                                                     <span class="badge bg-info-subtle text-info-emphasis border border-info-subtle <?= ($category === 'student') ? 'ring-2 ring-info fw-bold shadow-sm' : '' ?>"><i class="bi bi-mortarboard-fill me-1"></i>Student</span>
                                                 <?php endif; ?>
                                                 <?php if ($r['is_voter']): ?>
@@ -642,8 +630,6 @@ $categoryLabels = [
                                             <?= htmlspecialchars($r['first_name'] . ' ' . $r['last_name'] . ' ' . $r['suffix']) ?>
                                         </a>
                                     </h5>
-                                    <span class="badge bg-success bg-opacity-10 text-success fw-semibold mt-1">
-                                        Sitio <?= $r['sitio_id'] ?>: <?= htmlspecialchars($r['sitio_name']) ?>
                                     <span class="badge bg-success text-white py-1 px-2 fw-semibold mt-1 shadow-sm">
                                         <i class="bi bi-geo-alt-fill me-1"></i>Sitio <?= $r['sitio_id'] ?>: <?= htmlspecialchars($r['sitio_name']) ?>
                                     </span>

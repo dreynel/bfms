@@ -100,10 +100,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($username)) {
         $errors[] = 'Username is required.';
     }
-    if (empty($password) || strlen($password) < 6) {
-        $errors[] = 'Password must be at least 6 characters.';
-    }
-    if ($password !== $passwordConfirm) {
 
     // Password Uniqueness & Security Validation
     if (empty($password) || strlen($password) < 8) {
@@ -1076,7 +1072,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 </div>
                             </div>
 
-                            <div class="row g-3 mb-4">
                             <div class="row g-3 mb-3">
                                 <div class="col-md-4">
                                     <label class="form-label fw-bold">Desired Username <span class="text-danger">*</span></label>
@@ -1084,7 +1079,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label fw-bold">Password <span class="text-danger">*</span></label>
-                                    <input type="password" name="password" id="password" class="form-control form-control-lg" placeholder="Min. 6 characters" required>
                                     <input type="password" name="password" id="password" class="form-control form-control-lg" placeholder="Min. 8 characters" required>
                                 </div>
                                 <div class="col-md-4">

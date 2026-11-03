@@ -34,21 +34,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && in_array($role, ['captain', 'secret
 // Fetch all 7 Sitios with statistics and assigned BHWs
 $sql = "
     SELECT s.*, 
-           o.official_name AS council_sponsor_name, o.committee,
            ub.id AS bhw_user_id, ub.full_name AS bhw_name, ub.contact_number AS bhw_contact,
            COUNT(CASE WHEN r.status = 'approved' THEN 1 END) AS approved_count,
            COUNT(CASE WHEN r.status = 'pending' THEN 1 END) AS pending_count,
            COUNT(CASE WHEN r.is_pwd = 1 AND r.status = 'approved' THEN 1 END) AS pwd_count,
            COUNT(CASE WHEN r.is_solo_parent = 1 AND r.status = 'approved' THEN 1 END) AS solo_count,
            COUNT(CASE WHEN r.is_indigent = 1 AND r.status = 'approved' THEN 1 END) AS indigent_count,
-           COUNT(CASE WHEN r.is_senior = 1 AND r.status = 'approved' THEN 1 END) AS senior_count
            COUNT(CASE WHEN r.is_senior = 1 AND r.status = 'approved' THEN 1 END) AS senior_count,
            COUNT(CASE WHEN r.is_student = 1 AND r.status = 'approved' THEN 1 END) AS student_count
     FROM sitios s
-    LEFT JOIN officials o ON s.id = o.sitio_id
     LEFT JOIN users ub ON s.id = ub.assigned_sitio_id AND ub.role = 'bhw'
     LEFT JOIN residents r ON s.id = r.sitio_id
-    GROUP BY s.id, o.official_name, o.committee, ub.id, ub.full_name, ub.contact_number
     GROUP BY s.id, ub.id, ub.full_name, ub.contact_number
     ORDER BY s.id ASC
 ";
@@ -101,41 +97,24 @@ $bhws = $db->query("SELECT id, full_name FROM users WHERE role = 'bhw' ORDER BY 
                         <?php if (!empty($s['bhw_contact'])): ?>
                             <div class="small text-muted mt-1"><i class="bi bi-telephone me-1"></i><?= htmlspecialchars($s['bhw_contact']) ?></div>
                         <?php endif; ?>
-
-                        <?php if (!empty($s['council_sponsor_name'])): ?>
-                            <hr class="my-2 border-secondary border-opacity-25">
-                            <small class="text-muted d-block text-uppercase fw-semibold" style="font-size: 0.68rem;">Sangguniang Barangay Sponsor:</small>
-                            <div class="fw-semibold text-dark small mt-1">
-                                <?= htmlspecialchars($s['council_sponsor_name']) ?>
-                            </div>
-                            <div class="text-muted" style="font-size: 0.72rem;"><?= htmlspecialchars($s['committee'] ?? '') ?></div>
-                        <?php endif; ?>
                     </div>
 
                     <p class="text-muted small mb-3"><?= htmlspecialchars($s['description']) ?></p>
 
                     <!-- Demographic Metrics in this Sitio -->
                     <div class="row g-2 text-center small mb-3">
-                        <div class="col-3">
-                            <div class="p-2 border rounded bg-white">
                         <div class="col-4">
                             <a href="<?= url('residents?sitio=' . $s['id']) ?>" class="p-2 border rounded bg-white text-decoration-none d-block hover-shadow">
                                 <span class="text-muted d-block" style="font-size: 0.65rem;">Approved</span>
                                 <strong class="text-dark fs-6"><?= $s['approved_count'] ?></strong>
-                            </div>
                             </a>
                         </div>
-                        <div class="col-3">
-                            <div class="p-2 border rounded bg-white">
                         <div class="col-4">
                             <a href="<?= url('residents?sitio=' . $s['id'] . '&category=pwd') ?>" class="p-2 border rounded bg-white text-decoration-none d-block hover-shadow">
                                 <span class="text-primary d-block" style="font-size: 0.65rem;">PWD</span>
                                 <strong class="text-primary fs-6"><?= $s['pwd_count'] ?></strong>
-                            </div>
                             </a>
                         </div>
-                        <div class="col-3">
-                            <div class="p-2 border rounded bg-white">
                         <div class="col-4">
                             <a href="<?= url('residents?sitio=' . $s['id'] . '&category=student') ?>" class="p-2 border rounded bg-white text-decoration-none d-block hover-shadow">
                                 <span class="text-info d-block" style="font-size: 0.65rem;">Students</span>
@@ -146,16 +125,12 @@ $bhws = $db->query("SELECT id, full_name FROM users WHERE role = 'bhw' ORDER BY 
                             <a href="<?= url('residents?sitio=' . $s['id'] . '&category=solo_parent') ?>" class="p-2 border rounded bg-white text-decoration-none d-block hover-shadow">
                                 <span class="text-danger d-block" style="font-size: 0.65rem;">Solo Mo.</span>
                                 <strong class="text-danger fs-6"><?= $s['solo_count'] ?></strong>
-                            </div>
                             </a>
                         </div>
-                        <div class="col-3">
-                            <div class="p-2 border rounded bg-white">
                         <div class="col-4">
                             <a href="<?= url('residents?sitio=' . $s['id'] . '&category=indigent') ?>" class="p-2 border rounded bg-white text-decoration-none d-block hover-shadow">
                                 <span class="text-warning-emphasis d-block" style="font-size: 0.65rem;">Indigent</span>
                                 <strong class="text-warning-emphasis fs-6"><?= $s['indigent_count'] ?></strong>
-                            </div>
                             </a>
                         </div>
                         <div class="col-4">

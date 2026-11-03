@@ -34,7 +34,6 @@ if (in_array($role, ['captain', 'secretary', 'treasurer'])) {
                COUNT(CASE WHEN r.is_pwd = 1 AND r.status = 'approved' AND (r.is_archived = 0 OR r.is_archived IS NULL) THEN 1 END) AS pwd_count,
                COUNT(CASE WHEN r.is_solo_parent = 1 AND r.status = 'approved' AND (r.is_archived = 0 OR r.is_archived IS NULL) THEN 1 END) AS solo_count,
                COUNT(CASE WHEN r.is_indigent = 1 AND r.status = 'approved' AND (r.is_archived = 0 OR r.is_archived IS NULL) THEN 1 END) AS indigent_count,
-               COUNT(CASE WHEN r.is_senior = 1 AND r.status = 'approved' AND (r.is_archived = 0 OR r.is_archived IS NULL) THEN 1 END) AS senior_count
                COUNT(CASE WHEN r.is_senior = 1 AND r.status = 'approved' AND (r.is_archived = 0 OR r.is_archived IS NULL) THEN 1 END) AS senior_count,
                COUNT(CASE WHEN r.is_student = 1 AND r.status = 'approved' AND (r.is_archived = 0 OR r.is_archived IS NULL) THEN 1 END) AS student_count
         FROM sitios s
@@ -244,16 +243,8 @@ if (in_array($role, ['captain', 'secretary', 'treasurer'])) {
         </div>
     <?php endif; ?>
 
-    <!-- Summary Metrics Cards -->
     <!-- Summary Metrics Cards (Interactive Sector Hotlinks) -->
     <div class="row g-3 mb-4">
-        <div class="col-6 col-md-3">
-            <div class="stat-card p-3">
-                <div class="d-flex align-items-center justify-content-between">
-                    <div>
-                        <span class="text-muted small fw-semibold text-uppercase">Population</span>
-                        <h3 class="fw-bold text-success mb-0 mt-1"><?= number_format($totalResidents) ?></h3>
-                        <small class="text-muted"><?= $totalHouseholds ?> Households</small>
         <div class="col-6 col-md-4 col-xl-2">
             <a href="<?= url('residents') ?>" class="text-decoration-none">
                 <div class="stat-card p-3 h-100 hover-shadow transition border">
@@ -267,8 +258,6 @@ if (in_array($role, ['captain', 'secretary', 'treasurer'])) {
                             <i class="bi bi-people-fill"></i>
                         </div>
                     </div>
-                    <div class="stat-icon-box bg-success bg-opacity-10 text-success">
-                        <i class="bi bi-people-fill"></i>
                 </div>
             </a>
         </div>
@@ -287,17 +276,9 @@ if (in_array($role, ['captain', 'secretary', 'treasurer'])) {
                         </div>
                     </div>
                 </div>
-            </div>
             </a>
         </div>
 
-        <div class="col-6 col-md-3">
-            <div class="stat-card p-3">
-                <div class="d-flex align-items-center justify-content-between">
-                    <div>
-                        <span class="text-muted small fw-semibold text-uppercase">PWD Residents</span>
-                        <h3 class="fw-bold text-primary mb-0 mt-1"><?= number_format($totalPwds) ?></h3>
-                        <small class="text-primary"><i class="bi bi-person-wheelchair"></i> Priority Sector</small>
         <div class="col-6 col-md-4 col-xl-2">
             <a href="<?= url('residents?category=student') ?>" class="text-decoration-none">
                 <div class="stat-card p-3 h-100 hover-shadow transition border border-info-subtle bg-info-subtle bg-opacity-10">
@@ -311,8 +292,6 @@ if (in_array($role, ['captain', 'secretary', 'treasurer'])) {
                             <i class="bi bi-mortarboard-fill"></i>
                         </div>
                     </div>
-                    <div class="stat-icon-box bg-primary bg-opacity-10 text-primary">
-                        <i class="bi bi-person-wheelchair"></i>
                 </div>
             </a>
         </div>
@@ -331,17 +310,9 @@ if (in_array($role, ['captain', 'secretary', 'treasurer'])) {
                         </div>
                     </div>
                 </div>
-            </div>
             </a>
         </div>
 
-        <div class="col-6 col-md-3">
-            <div class="stat-card p-3">
-                <div class="d-flex align-items-center justify-content-between">
-                    <div>
-                        <span class="text-muted small fw-semibold text-uppercase">Solo Mothers</span>
-                        <h3 class="fw-bold text-danger mb-0 mt-1"><?= number_format($totalSoloParents) ?></h3>
-                        <small class="text-danger"><i class="bi bi-person-heart"></i> Solo Parents</small>
         <div class="col-6 col-md-4 col-xl-2">
             <a href="<?= url('residents?category=indigent') ?>" class="text-decoration-none">
                 <div class="stat-card p-3 h-100 hover-shadow transition border border-warning-subtle bg-warning-subtle bg-opacity-10">
@@ -355,21 +326,10 @@ if (in_array($role, ['captain', 'secretary', 'treasurer'])) {
                             <i class="bi bi-wallet2"></i>
                         </div>
                     </div>
-                    <div class="stat-icon-box bg-danger bg-opacity-10 text-danger">
-                        <i class="bi bi-person-heart"></i>
-                    </div>
                 </div>
-            </div>
             </a>
         </div>
 
-        <div class="col-6 col-md-3">
-            <div class="stat-card p-3">
-                <div class="d-flex align-items-center justify-content-between">
-                    <div>
-                        <span class="text-muted small fw-semibold text-uppercase">Indigent Families</span>
-                        <h3 class="fw-bold text-warning-emphasis mb-0 mt-1"><?= number_format($totalIndigents) ?></h3>
-                        <small class="text-muted"><?= $total4ps ?> 4Ps Listed</small>
         <div class="col-6 col-md-4 col-xl-2">
             <a href="<?= url('residents?category=senior') ?>" class="text-decoration-none">
                 <div class="stat-card p-3 h-100 hover-shadow transition border border-secondary-subtle">
@@ -383,11 +343,7 @@ if (in_array($role, ['captain', 'secretary', 'treasurer'])) {
                             <i class="bi bi-person-cane"></i>
                         </div>
                     </div>
-                    <div class="stat-icon-box bg-warning bg-opacity-10 text-warning-emphasis">
-                        <i class="bi bi-wallet2"></i>
-                    </div>
                 </div>
-            </div>
             </a>
         </div>
     </div>
@@ -397,7 +353,6 @@ if (in_array($role, ['captain', 'secretary', 'treasurer'])) {
         <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center gap-2">
                 <i class="bi bi-geo-alt-fill text-success fs-5"></i>
-                <h5 class="fw-bold mb-0">The 7 Sitios of Barangay Lublub & Assigned Health Workers</h5>
                 <h5 class="fw-bold mb-0">The 7 Sitios of Barangay Lublub & Demographic Breakdown</h5>
             </div>
             <a href="<?= url('sitios') ?>" class="btn btn-sm btn-outline-success">
@@ -412,10 +367,8 @@ if (in_array($role, ['captain', 'secretary', 'treasurer'])) {
                         <th>Sitio Name</th>
                         <th>Assigned BHW</th>
                         <th class="text-center">Approved Pop.</th>
-                        <th class="text-center">Pending Approvals</th>
                         <th class="text-center">Pending</th>
                         <th class="text-center">PWD</th>
-                        <th class="text-center">Solo Mothers</th>
                         <th class="text-center">Students</th>
                         <th class="text-center">Solo Parents</th>
                         <th class="text-center">Indigents</th>
@@ -449,10 +402,6 @@ if (in_array($role, ['captain', 'secretary', 'treasurer'])) {
                                     <span class="badge bg-success-subtle text-success border">0 Pending</span>
                                 <?php endif; ?>
                             </td>
-                            <td class="text-center"><span class="badge badge-pwd"><?= $s['pwd_count'] ?></span></td>
-                            <td class="text-center"><span class="badge badge-solo"><?= $s['solo_count'] ?></span></td>
-                            <td class="text-center"><span class="badge badge-indigent"><?= $s['indigent_count'] ?></span></td>
-                            <td class="text-center"><span class="badge badge-senior"><?= $s['senior_count'] ?></span></td>
                             <td class="text-center">
                                 <a href="<?= url('residents?sitio=' . $s['id'] . '&category=pwd') ?>" class="badge badge-pwd text-decoration-none" title="Filter PWDs in <?= htmlspecialchars($s['name']) ?>">
                                     <?= $s['pwd_count'] ?>
@@ -686,7 +635,6 @@ if (in_array($role, ['captain', 'secretary', 'treasurer'])) {
                 <div class="card border-0 shadow-sm rounded-4 p-3 bg-white h-100 hover-shadow transition">
                     <span class="text-muted small fw-semibold text-uppercase">Sitio Residents</span>
                     <h3 class="fw-bold text-primary mb-0 mt-1"><?= number_format($sitioResidents) ?></h3>
-                    <small class="text-muted"><?= $sitioPwds ?> PWD &bull; <?= $sitioSeniors ?> Seniors</small>
                     <small class="text-muted"><?= $sitioPwds ?> PWD &bull; <?= $sitioStudents ?> Students</small>
                 </div>
             </a>

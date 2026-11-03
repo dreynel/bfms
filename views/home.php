@@ -329,12 +329,9 @@ $programs = $db->query("
                     <p class="text-muted small mt-2 mb-0">Executive Head & Administrator</p>
                 </div>
                 <div class="col-md-8">
-                    <h6 class="fw-bold text-success mb-3"><i class="bi bi-people-fill me-1"></i>Sangguniang Barangay Council (7 Sitios):</h6>
-                    <div class="row g-2 small">
                     <h6 class="fw-bold text-success mb-3"><i class="bi bi-shield-check me-1"></i>Barangay Executive Leadership:</h6>
                     <div class="row g-3 small">
                         <div class="col-sm-6">
-                            <strong>1. Hon. Lucky Alarcon</strong> &bull; <span class="text-success">Sitio Sabang</span>
                             <div class="p-3 rounded-3 bg-light border">
                                 <strong class="d-block text-dark fs-6">Ms. Annielor Gulbique</strong>
                                 <span class="badge bg-primary mt-1">Barangay Secretary</span>
@@ -342,38 +339,17 @@ $programs = $db->query("
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <strong>2. Hon. Marianita Cervas</strong> &bull; <span class="text-success">Sitio Ilaya Facoma</span>
                             <div class="p-3 rounded-3 bg-light border">
                                 <strong class="d-block text-dark fs-6">Ms. Joy Valiente</strong>
                                 <span class="badge bg-info text-dark mt-1">Barangay Treasurer</span>
                                 <div class="text-muted small mt-1">Ayuda Distribution & Financial Services</div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <strong>3. Hon. Edgar Decastillo</strong> &bull; <span class="text-success">Sitio Lanag</span>
                         <div class="col-12 mt-2">
                             <div class="p-2 px-3 rounded-3 bg-success bg-opacity-10 text-success border border-success-subtle d-flex align-items-center gap-2">
                                 <i class="bi bi-geo-alt-fill fs-5"></i>
                                 <span><strong>7 Territorial Sitios:</strong> Sitio Proper &bull; Sitio Centro &bull; Sitio Weapons &bull; Sitio Ilaya Facoma &bull; Sitio Sabang &bull; Sitio Subdivision &bull; Sitio Lanag</span>
                             </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <strong>4. Hon. Renier Dilag</strong> &bull; <span class="text-success">Sitio Subdivision</span>
-                        </div>
-                        <div class="col-sm-6">
-                            <strong>5. Hon. Aladino Deblois</strong> &bull; <span class="text-success">Sitio Weapons</span>
-                        </div>
-                        <div class="col-sm-6">
-                            <strong>6. Hon. Mark Lester Dolendo</strong> &bull; <span class="text-success">Sitio Centro</span>
-                        </div>
-                        <div class="col-sm-6">
-                            <strong>7. Hon. Arnold Do-oma</strong> &bull; <span class="text-success">Sitio Proper</span>
-                        </div>
-                        <div class="col-sm-6 text-muted">
-                            <strong>Barangay Secretary:</strong> Ms. Annielor Gulbique
-                        </div>
-                        <div class="col-sm-6 text-muted">
-                            <strong>Barangay Treasurer:</strong> Ms. Joy Valiente
                         </div>
                     </div>
                 </div>

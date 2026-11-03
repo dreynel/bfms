@@ -60,7 +60,6 @@ if (!$resident) {
     <div class="row g-0">
         <div class="col-4 cert-sidebar">
             <div class="text-center mb-3">
-                <strong class="d-block text-success" style="font-size: 0.82rem; text-transform: uppercase;">Barangay Council (2023-2026)</strong>
                 <strong class="d-block text-success" style="font-size: 0.82rem; text-transform: uppercase;">Barangay Executive Council</strong>
             </div>
 
@@ -72,23 +71,10 @@ if (!$resident) {
             <hr class="my-2">
 
             <div class="mb-2">
-                <strong class="d-block text-dark">HON. RAFAEL M. MONFORT</strong>
-                <small class="text-muted d-block">Punong Barangay</small>
                 <strong class="d-block text-dark">MS. ANNIELOR GULBIQUE</strong>
                 <small class="text-muted d-block">Barangay Secretary</small>
             </div>
 
-            <div class="mb-2"><strong>SANGGUNIANG KAGAWAD:</strong></div>
-            <div class="mb-1"><strong>Hon. Eduardo P. Decolongon</strong><div class="text-muted" style="font-size: 0.7rem;">Sitio Centro</div></div>
-            <div class="mb-1"><strong>Hon. Maria Fe L. Divinagracia</strong><div class="text-muted" style="font-size: 0.7rem;">Sitio Ilaya</div></div>
-            <div class="mb-1"><strong>Hon. Roberto S. Celis</strong><div class="text-muted" style="font-size: 0.7rem;">Sitio Ilawod</div></div>
-            <div class="mb-1"><strong>Hon. Jocelyn D. Baldevia</strong><div class="text-muted" style="font-size: 0.7rem;">Sitio Tabucan</div></div>
-            <div class="mb-1"><strong>Hon. Arnel G. Dumalag</strong><div class="text-muted" style="font-size: 0.7rem;">Sitio Crossing</div></div>
-            <div class="mb-1"><strong>Hon. Salvacion T. Labordo</strong><div class="text-muted" style="font-size: 0.7rem;">Sitio Malipayon</div></div>
-            <div class="mb-2"><strong>Hon. Nelson B. Cordero</strong><div class="text-muted" style="font-size: 0.7rem;">Sitio Pag-asa</div></div>
-            <hr class="my-2">
-            <div class="mb-1"><strong>Ma. Theresa B. Alipao</strong><div class="text-muted" style="font-size: 0.7rem;">Barangay Secretary</div></div>
-            <div class="mb-1"><strong>Ronaldo C. Valencia</strong><div class="text-muted" style="font-size: 0.7rem;">Barangay Treasurer</div></div>
             <div class="mb-2">
                 <strong class="d-block text-dark">MS. JOY VALIENTE</strong>
                 <small class="text-muted d-block">Barangay Treasurer</small>

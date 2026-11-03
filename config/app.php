@@ -38,21 +38,6 @@ function detect_base_url() {
     if (php_sapi_name() === 'cli-server') {
         return '';
     }
-    
-    if (isset($_SERVER['DOCUMENT_ROOT'])) {
-        $docRoot  = str_replace('\\', '/', realpath($_SERVER['DOCUMENT_ROOT']) ?: $_SERVER['DOCUMENT_ROOT']);
-        $projRoot = str_replace('\\', '/', dirname(__DIR__));
-        
-        $docRoot  = rtrim($docRoot, '/');
-        $projRoot = rtrim($projRoot, '/');
-        
-        if ($docRoot !== '' && strpos($projRoot, $docRoot) === 0) {
-            $sub = substr($projRoot, strlen($docRoot));
-            return rtrim($sub, '/');
-        }
-    }
-    
-    // Fallback based on script name if DOCUMENT_ROOT is non-standard
 
     if (isset($_SERVER['SCRIPT_NAME'])) {
         $scriptDir = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']));
@@ -61,7 +46,6 @@ function detect_base_url() {
             '/pages/certificates', '/pages/reports', '/pages',
             '/modules/auth', '/modules/dashboard', '/modules/residents',
             '/modules/social_services', '/modules/sitios', '/modules/certificates',
-            '/modules/officials', '/modules/reports', '/config'
             '/modules/officials', '/modules/reports', '/config', '/views'
         ];
         foreach ($knownDirs as $kd) {
@@ -147,20 +131,17 @@ function url($path = '') {
 
     // 1. Root / homepage
     if ($path === '' || $path === 'index.php') {
-        return $base === '' ? '/' : $base . '/';
         return $base === '' ? 'index.php' : $base . '/';
     }
 
     // 2. Direct static assets, uploads, and installers
     if (str_starts_with($path, 'assets/') || str_starts_with($path, 'uploads/') || str_starts_with($path, 'install.php')) {
-        return ($base === '' ? '/' : $base . '/') . $path;
         return ($base === '' ? '' : $base . '/') . $path;
     }
 
     // 3. If already a query route (?page=...), prefix base index.php
     if (str_starts_with($path, '?page=') || str_starts_with($path, 'index.php?page=') || str_starts_with($path, '?')) {
         $clean = ltrim($path, 'index.php');
-        return ($base === '' ? '/index.php' : $base . '/index.php') . $clean;
         return ($base === '' ? 'index.php' : $base . '/index.php') . $clean;
     }
 
@@ -178,7 +159,6 @@ function url($path = '') {
         if ($query !== '') {
             $routeParam .= '&' . $query;
         }
-        return ($base === '' ? '/' : $base . '/') . $routeParam;
         return ($base === '' ? '' : $base . '/') . $routeParam;
     }
 
@@ -193,7 +173,6 @@ function url($path = '') {
     if ($query !== '') {
         $routeParam .= '&' . $query;
     }
-    return ($base === '' ? '/' : $base . '/') . $routeParam;
     return ($base === '' ? '' : $base . '/') . $routeParam;
 }
 
@@ -468,7 +447,6 @@ function generate_resident_code($db = null, $year = null) {
     // Query highest numerical suffix currently in use for this year
     // 'LUB-YYYY-' has length 9, so SUBSTRING(resident_code, 10) extracts 'XXXX'
     $stmt = $db->prepare("
-        SELECT MAX(CAST(SUBSTRING(resident_code, fix 10) AS UNSIGNED)) 
         SELECT MAX(CAST(SUBSTRING(resident_code, 10) AS UNSIGNED)) 
         FROM residents 
         WHERE resident_code LIKE ?
